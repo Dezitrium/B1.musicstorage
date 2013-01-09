@@ -1,0 +1,41 @@
+﻿html {
+  overflow-y: scroll;
+}
+
+body {
+    padding-top: 60px;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;  
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-top: 1px solid #eaeaea; 
+}
+
+footer small {    
+    float: left;
+}
+
+footer ul {    
+    list-style: none;
+    float: right;
+}
+
+footer ul li {
+    float: left;
+    margin-left: 10px;
+}

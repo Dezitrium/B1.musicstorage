@@ -1,0 +1,20 @@
+﻿@model B1.musicstore.Models.Album
+
+@{
+    ViewBag.Title = "Album - " + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<div id="album-details">
+    <dl class="dl-horizontal">
+        <dt>Genre</dt><dd>@Model.Genre.Name</dd>
+        <dt>Artist</dt><dd>@Model.Artist.Name</dd>
+    </dl>
+</div>
+
+<div class="clearfix"></div>
+
+<div>
+    @Html.ActionLink("Back to Genre", "Browse", new { genre = Model.Genre.Name })
+</div>

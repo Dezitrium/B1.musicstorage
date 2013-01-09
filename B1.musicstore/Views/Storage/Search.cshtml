@@ -1,0 +1,83 @@
+﻿@model B1.musicstore.ViewModel.SearchResults
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+@helper make_link(string val, string active) {
+    if (val == active) {
+        <li class="active"><a href="#@(val)s">@(val)</a></li>
+    } else {
+        <li><a href="#@(val)s">@(val)</a></li>
+    }
+}
+
+@helper JumpMarks(string active)
+{
+    if (Model.CountAll > 30) {
+        <ul class="nav nav-pills pull-right">
+            @make_link("Genre",active)
+            @make_link("Album",active)
+            @make_link("Artist",active)
+        </ul>
+    }
+}
+
+<h2>Searched for "@ViewBag.searchString"</h2>
+
+ 
+
+@if (@Model.forGenre) 
+{
+    <section>
+        @JumpMarks("Genre")
+    
+        <h3 id="Genres">Genres</h3>
+    
+        @if (Model.Genres.Any())
+        {    
+            <ul id="genre-list">
+                @Html.Partial("../Storage/_Genres", Model.Genres)     
+            </ul>
+        } else {
+            <p>There is no genre for "@ViewBag.searchString".</p>
+        }
+    </section>
+}
+
+@if (@Model.forAlbum)
+{
+    <section>
+        @JumpMarks("Album")
+
+        <h3 id="Albums">Albums</h3>
+    
+        @if (Model.Albums.Any())
+        {    
+            <ul id="album-list">
+                @Html.Partial("../Storage/_Albums", Model.Albums)     
+            </ul>
+        } else {    
+            <p>There is no album for "@ViewBag.searchString".</p>
+        }
+    </section>
+}
+
+@if (@Model.forArtist)
+{
+    <section>
+        @JumpMarks("Artist")
+    
+        <h3 id="Artists">Artists</h3>
+ 
+        @if (Model.Artists.Any())
+        {   
+            <ul id="artist-list">
+                @Html.Partial("../Storage/_Artists", Model.Artists)     
+            </ul>
+        } else {
+            <p>There is no artist for "@ViewBag.searchString".</p>
+        }
+    </section>
+}

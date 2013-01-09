@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")   
+    @Styles.Render("~/Content/bootstrap")   
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @Html.Partial("_Header")
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+          <div id="sidebar" class="span2 offset2">
+              <ul class="nav nav-list">
+                @{ Html.RenderAction("Genres", "Storage"); }
+              </ul>
+          </div>          
+          <div id="main" class="span5">
+            @RenderBody()
+          </div>
+        </div>
+    </div>  
+      
+    @Html.Partial("_Footer")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

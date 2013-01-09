@@ -1,0 +1,65 @@
+﻿@model IEnumerable<B1.musicstore.Models.Album>
+@using B1.musicstore.Views.Utils
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+<div class="pull-left">
+    @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-small"})
+</div>
+
+@using (Html.BeginForm("Index", "StorageManager", FormMethod.Get, new { @class = "form-inline form-search pull-right" }))
+{ 
+    <div class="input-prepend input-append">  
+                <button type="submit" class="btn">Search</button>       
+                <select name="category" class="input-small">
+                    <option>All</option>
+                    <option>Genre</option>
+                    <option>Album</option>
+                    <option>Artist</option>
+                </select>                                         
+                <input type="text" name="searchString" class="search-query">                              
+            </div>
+}
+    </div>
+
+<table class="table table-condensed">
+    <tr>
+        <th>
+            Genre
+        </th>
+        <th>
+            Artist
+        </th>
+        <th>
+            Title
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @item.Artist.Name.truncate(25)
+        </td>
+        <td>
+            @item.Title.truncate(25)
+        </td>
+        <td>
+            <div class="btn-group">
+                @Html.ActionLink("Edit", "Edit", new { id = item.AlbumId }, new { @class="btn btn-mini"})
+                @Html.ActionLink("Details", "Details", new { id=item.AlbumId }, new { @class="btn btn-mini"})
+                @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId }, new { @class="btn btn-mini btn-danger"})
+            </div>
+        </td>
+    </tr>
+}
+
+</table>

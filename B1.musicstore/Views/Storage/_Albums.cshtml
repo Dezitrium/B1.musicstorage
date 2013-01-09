@@ -1,0 +1,5 @@
+﻿@model IEnumerable<B1.musicstore.Models.Album>
+
+@foreach (var album in Model) {
+    <li>@Html.ActionLink(album.Title, "Details", "Storage",  new { id = album.AlbumId }, null)</li>
+}

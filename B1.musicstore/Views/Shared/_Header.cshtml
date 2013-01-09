@@ -1,0 +1,29 @@
+﻿<header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container">
+        <div id="logo">
+            @Html.ActionLink("B1 Music Storage", "Home", "StaticPages")          
+        </div>
+        <nav>
+        @using (Html.BeginForm("Search", "Storage", FormMethod.Get, new { @class = "navbar-search form-search pull-right" }))
+        { 
+            <div class="input-prepend input-append">  
+                <button type="submit" class="btn">Search</button>       
+                <select name="category" class="input-small">
+                    <option>All</option>
+                    <option>Genre</option>
+                    <option>Album</option>
+                    <option>Artist</option>
+                </select>                                         
+                <input type="text" name="searchString" class="span2 search-query">                              
+            </div>
+        }     
+        <ul class="nav pull-right">
+            <li>@Html.ActionLink("Home", "Home", "StaticPages")</li>
+            <li>@Html.ActionLink("Help", "Help", "StaticPages")</li>
+            <li>@Html.ActionLink("Manage", "Index", "StorageManager")</li>
+        </ul>
+        </nav>
+    </div>
+    </div>
+</header>
